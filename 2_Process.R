@@ -44,13 +44,15 @@ stream_ann<- stream_ann
 aqu_ann<- Subc_aqu_ann
 pars <-  dat$parameter$values
 
-var_ann<-readRDS ("C:/Users/Portatil_ACMA/Desktop/desk/var_ann.rds")
+var_ann<-readRDS ("C:/Users/Portatil_ACMA/Desktop/desk/Subc_Var_ann.rds")
 stream_ann<-  readRDS ("C:/Users/Portatil_ACMA/Desktop/desk/stream_ann.rds")
 aqu_ann<- readRDS ("C:/Users/Portatil_ACMA/Desktop/desk/aqu_ann.rds")
 pars<- read_csv("C:/Users/Portatil_ACMA/Desktop/desk/Param.csv") %>% .[-1] 
 
 ####Hydrological indices Sccaterplots####
 #Sccaterplot for each sub-catchment of Runoff coefficient and Groundwater contribution 
+
+##Sub-catchment Peralejos##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`1 Peralejos`/var_ann$`1 Peralejos`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Peralejos/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`1 Peralejos`/var_ann$`1 Peralejos`$pcp), "Q/p")
@@ -66,7 +68,7 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`1 Peralejos`/stream_ann$`
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Peralejos/Fc_Q_DEB.png",plot = plot_dotty2,device = "png",width = 15 ,height = 9)
 
 
-
+##Sub-catchment Huete##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`172 Huete`/var_ann$`172 Huete`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Huete/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`172 Huete`/var_ann$`172 Huete`$pcp), "Q/p")
@@ -82,7 +84,7 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`172 Huete`/stream_ann$`17
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Huete/Fc_Q_DEB.png",plot = plot_dotty2,device = "png",width = 15 ,height = 9)
 
 
-
+##Sub-catchment La Peraleja##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`173 La Peraleja`/var_ann$`173 La Peraleja`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/La Peraleja/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`173 La Peraleja`/var_ann$`173 La Peraleja`$pcp), "Q/p")
@@ -98,7 +100,7 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`173 La Peraleja`/stream_a
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/La Peraleja/Fc_Q_DEB.png",plot = plot_dotty2,device = "png",width = 15 ,height = 9)
 
 
-
+##Sub-catchment Priego-Trabaque##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`186 Priego-Trabaque`/var_ann$`186 Priego-Trabaque`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Priego Trabaque/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`186 Priego-Trabaque`/var_ann$`186 Priego-Trabaque`$pcp), "Q/p")
@@ -114,7 +116,7 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`186 Priego-Trabaque`/stre
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Priego Trabaque/Fc_Q_DEB.png",plot = plot_dotty2,device = "png",width = 15 ,height = 9)
 
 
-
+##Sub-catchment Taravillas##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`268 Taravillas`/var_ann$`268 Taravillas`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Taravillas/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`268 Taravillas`/var_ann$`268 Taravillas`$pcp), "Q/p")
@@ -130,8 +132,7 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`268 Taravillas`/stream_an
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Taravillas/Fc_Q_DEB.png",plot = plot_dotty2,device = "png",width = 15 ,height = 9)
 
 
-
-
+##Sub-catchment Ventosa##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`30 Ventosa`/var_ann$`30 Ventosa`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Ventosa/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`30 Ventosa`/var_ann$`30 Ventosa`$pcp), "Q/p")
@@ -147,8 +148,7 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`30 Ventosa`/stream_ann$`3
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Ventosa/Fc_Q_DEB.png",plot = plot_dotty2,device = "png",width = 15 ,height = 9)
 
 
-
-
+##Sub-catchment Alcantud##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`41 Alcantud`/var_ann$`41 Alcantud`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Alcantud/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`41 Alcantud`/var_ann$`41 Alcantud`$pcp), "Q/p")
@@ -164,7 +164,7 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`41 Alcantud`/stream_ann$`
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Alcantud/Fc_Q_DEB.png",plot = plot_dotty2,device = "png",width = 15 ,height = 9)
 
 
-
+##Sub-catchment Priego-Escabas##
 plot_dotty1<-plot_dotty(pars[,1:10], unlist(stream_ann$`45 Priego-Escabas`/var_ann$`45 Priego-Escabas`$pcp), "Q/p")
 #ggsave("C:/Jose_ACMA/Model1/Resultados/Resultados/Priego Escabas/Q_P_Carb.png",plot = plot_dotty1,device = "png",width = 15 ,height = 9)
 plot_dotty1<-plot_dotty(pars[,11:20], unlist(stream_ann$`45 Priego-Escabas`/var_ann$`45 Priego-Escabas`$pcp), "Q/p")
@@ -182,10 +182,10 @@ plot_dotty2<-plot_dotty(pars[,21:30],  unlist(aqu_ann$`45 Priego-Escabas`/stream
 
 
 #### Hard Calibration process####    
-#Upload results
-sim_cha_list <- flow_list
-sim_gw_list <- Subc_aqu_agg
-obs_flo <- read_rds("C:/Users/Portatil_ACMA/Desktop/desk/Obs_flo11_20.rds") %>% 
+#Load results
+sim_cha_list <- stream_day
+sim_gw_list <- Subc_aqu_day
+obs_flo <- read_rds("C:/Users/Portatil_ACMA/Desktop/desk/Obs_flo11_20.rds") %>% #Observed data
   lapply(., function(tabla) {
     tabla %>%
       filter(date >= ymd("2011-01-01") & date <= ymd("2014-12-31"))
@@ -271,7 +271,7 @@ for(i in 1:length(sim_cha_list)){
                        rank_rmses = rank(-abs(stat_list[[i]]$rmses)),
                        rank_pbias = rank(-abs(stat_list[[i]]$pbias)),
                        rank_run = rank_pbias+rank_r2 +rank_rmses+rank_nse) %>%  
-    dplyr::arrange(., desc(rank_run)) %>% .[c(1:5),] 
+    dplyr::arrange(., desc(rank_run)) %>% .[c(1:5),] #Select range to set the number of simulations to be filtered 
   
   ranking10_metricas[[i]]<-best_runs
   best_runs_num<-best_runs$run
@@ -427,29 +427,28 @@ value_counts$Columns <- value_columns
 #Sort the values by their frequency in descending order
 value_rep <- value_counts %>%  
   dplyr::arrange(., desc(Frequency)) 
+
+
 ####Plot best simulation. Direct and gw flow in streamflow####
-sim_gw_list <- read_rds("C:/Users/Portatil_ACMA/Desktop/desk/aqu_day.rds")
+sim_gw_list <- Subc_aqu_day
 area_region<-c(412485223, 360468848, 255388734, 387975279, 206168246, 943975003, 557866983, 343024862, 3276668547) 
-sim_cha_list <- read_rds("C:/Users/Portatil_ACMA/Desktop/desk/stream_day.rds")
+sim_cha_list <- stream_day
 
 for(i in 1:length(sim_cha_list)){
   sim_cha_list[[i]]<-sim_cha_list[[i]]%>% mutate(across(-one_of("date"), ~ . * (86400*1000/ area_region[i])))}
 
+obs_flo <- read_rds("C:/Users/Portatil_ACMA/Desktop/desk/Obs_flo11_20.rds") %>% #Observed data
+  lapply(., function(tabla) {
+    tabla %>%
+      filter(date >= ymd("2011-01-01") & date <= ymd("2011-12-31"))
+  })
 
-obs_flo5555<- read_rds("C:/Jose_ACMA/Model1/Simul_Datos/CaudalesObserv/HC/Obs_mm_19_9sub.rds")
-obs_flo <- read_rds("C:/Users/Portatil_ACMA/Desktop/desk/Obs_flo11_20.rds")
-
-area_region<-c(412485223,  360468848  ,255388734 , 387975279 , 206168246  ,943975003 , 557866983 , 343024862 ,3276668547)
-for(i in 1:length(flow_list)){
+for(i in 1:length(obs_flo)){
   obs_flo[[i]]$obs_flow<-obs_flo[[i]]$obs_flow*86400*1000/ area_region[i] #Convert m3/sg to mm
   }
 
-
-for(i in 1:8){
-  obs_flo [[i]]<- obs_flo[[i]] %>%  filter(date %in% (ymd("2011-01-01"):ymd("2014-12-31")))}
-
-
-for(i in 1:8){ 
+plot_grap<-list()
+for(i in 1:9){ 
 plot_sim<- sim_cha_list[[i]] %>% select(1, best_runs_vec[[i]][1]+1) %>% setnames(c("date","streamf"))
 
 plot_gw<- sim_gw_list[[i]] %>% select(1, best_runs_vec[[i]][1]+1)  %>% 
@@ -488,9 +487,8 @@ plot_hidr<-ggplot(plot_gw) +
                date_labels = "%Y") +
   coord_cartesian(xlim = c(min(plot_gw$date)+120, max(plot_gw$date))-62)
 
-
-ggsave(filename = paste(i,"Fcha2", sep = "_", ".jpg"), path =  "C:/Users/Portatil_ACMA/Desktop/" ,plot =plot_hidr, 
-       device = "jpg", width = 16, height = 10,dpi = 300)
-       #bg = "transparent"
+  plot_grap[[i]]<-plot_hidr
+#ggsave(filename = paste(i,"Fcha2", sep = "_", ".jpg"), path =  "C:/Users/Portatil_ACMA/Desktop/" ,plot =plot_hidr, 
+#       device = "jpg", width = 16, height = 10,dpi = 300)
 }
 

@@ -334,30 +334,30 @@ for(i in 1:length(Subc_aqu_list2)){
 
 
 Subc_aqu_list3<-Subc_aqu_list2
-Subc_aqu_agg<-list()
+Subc_aqu_day<-list()
 Subc_aqu_ann<-list()
 for(i in 1:length(Subc_aqu_list3)){
   for(n in 1:length(Subc_aqu_list3[[i]]))
     for(k in 1:length(Subc_aqu_list3[[i]][[n]])){
       Subc_aqu_list3[[i]][[n]]<-  Subc_aqu_list3[[i]][[n]][[k]]%>% mutate(across(-one_of("date"), ~ . * (area_subb[[i]][n]/area_region[[i]])))}  
-      Subc_aqu_agg[[i]]<- rbindlist(Subc_aqu_list3[[i]])%>% group_by(date) %>%  summarise(across(starts_with("run_"), sum))
+      Subc_aqu_day[[i]]<- rbindlist(Subc_aqu_list3[[i]])%>% group_by(date) %>%  summarise(across(starts_with("run_"), sum))
       Subc_aqu_ann[[i]]<- rbindlist(Subc_aqu_list3[[i]])%>% mutate(year = year(date))%>% group_by(year) %>%  summarise(across(starts_with("run_"), sum)) %>% 
         summarise(across(starts_with("run_"), mean))}
 
 
 names(Subc_aqu_list3) <- levels(lsus_reg$ESTACIÓN)
-names(Subc_aqu_agg) <- levels(lsus_reg$ESTACIÓN)
+names(Subc_aqu_day) <- levels(lsus_reg$ESTACIÓN)
 names(Subc_aqu_ann) <- levels(lsus_reg$ESTACIÓN)
 
 ####Streamflow#####
 #Daily
-flow_list <- dat$simulation[startsWith(names(dat$simulation), "flow")]%>% .[c(5,6,9,7,8,2,3,4,1)]
-names(flow_list) <- levels(lsus_reg$ESTACIÓN)
+stream_day <- dat$simulation[startsWith(names(dat$simulation), "flow")] %>% .[c(5,6,9,7,8,2,3,4,1)]
+names(stream_day) <- levels(lsus_reg$ESTACIÓN)
 
 #Annual
 stream_ann<- list()
-for(i in 1:length(flow_list)){
-  flow_1<-flow_list[[i]]%>%
+for(i in 1:length(stream_day)){
+  flow_1<-stream_day[[i]]%>%
     mutate(year = year(date))%>% group_by(year) %>% 
     summarise(across(starts_with("run_"), mean)) %>% 
     summarise(across(starts_with("run_"), mean))
@@ -367,18 +367,13 @@ names(stream_ann) <- levels(lsus_reg$ESTACIÓN)
 
 ###Save Result####
 pars <-  dat$parameter$values
-write_rds(x= var_ann, file = "C:/Users/Portatil_ACMA/Desktop/desk/var_day.rds")
-write_rds(x= Subc_Var_ann, file = "C:/Users/Portatil_ACMA/Desktop/desk/var_ann.rds")
-write_rds(x= Subc_aqu_agg, file = "C:/Users/Portatil_ACMA/Desktop/desk/aqu_day.rds")
-write_rds(x= Subc_aqu_ann, file = "C:/Users/Portatil_ACMA/Desktop/desk/aqu_ann.rds")
-write_rds(x= flow_list, file = "C:/Users/Portatil_ACMA/Desktop/desk/stream_day.rds")
+write_rds(x= Subc_Var_day, file = "C:/Users/Portatil_ACMA/Desktop/desk/Subc_Var_day.rds")
+write_rds(x= Subc_Var_ann, file = "C:/Users/Portatil_ACMA/Desktop/desk/Subc_Var_ann.rds")
+write_rds(x= Subc_aqu_day, file = "C:/Users/Portatil_ACMA/Desktop/desk/Subc_aqu_day.rds")
+write_rds(x= Subc_aqu_ann, file = "C:/Users/Portatil_ACMA/Desktop/desk/Subc_aqu_ann.rds")
+write_rds(x= stream_day, file = "C:/Users/Portatil_ACMA/Desktop/desk/stream_day.rds")
 write_rds(x= stream_ann, file = "C:/Users/Portatil_ACMA/Desktop/desk/stream_ann.rds")
 write.csv(dat$parameter$values,"C:/Users/Portatil_ACMA/Desktop/desk/Param.csv")
 
 
-####Upload save data#####
-var_ann<-readRDS ("C:/Users/Portatil_ACMA/Desktop/desk/var_ann.rds")
-stream_ann<-  readRDS ("C:/Users/Portatil_ACMA/Desktop/desk/stream_ann.rds")
-aqu_ann<- readRDS ("C:/Users/Portatil_ACMA/Desktop/desk/aqu_ann.rds")
-pars<- read_csv("C:/Users/Portatil_ACMA/Desktop/desk/Param.csv") %>% .[-1] 
 
