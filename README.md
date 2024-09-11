@@ -2,6 +2,7 @@
 This repository contains the codes to reproduce the calibration and validation presented in the manuscript: Calibrating streamflow and hydrological processes in the geological regions using a combined soft and hard calibration approach
 
 The repository have 3 scripts:
+
 1_Soft-Hard: This scrip contains the code implemented in the calibration of the model (soft-calibration and hard-calibration) with the subsequent processing of the variables to make the aggregation of results in sub-catchment on a daily and annual sub-catchments.
 
 2_Evaluation: This scrip contains the code for the extraction of the scatter plots results of the soft-calibration and for the estimation of the hard-calibration performance metrics for each sub-catchment. Additionally, code is included to determine the selection of the best performing simulations in the simulated sub-catchments.
