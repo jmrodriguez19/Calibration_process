@@ -1,4 +1,4 @@
-# Calibration_process
+# Calibrating Streamflow and Hydrological Processes in the Geological Regions Using a Combined Soft and Hard Calibration Approach. 
 This repository contains the codes to reproduce the calibration and validation presented in the manuscript: Calibrating streamflow and hydrological processes in the geological regions using a combined soft and hard calibration approach
 
 The repository have 3 scripts:
